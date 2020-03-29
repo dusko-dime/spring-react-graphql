@@ -1,0 +1,59 @@
+type Person {
+    id: ID!,
+    name: String
+}
+
+type Travel {
+    id: ID!,
+    fromDestination: String,
+    toDestination: String,
+    vehicleId: Int
+}
+
+type City {
+    id: ID!,
+    name: String,
+    vehicles: [Vehicle]
+}
+
+type Vehicle {
+    id: ID!,
+    type: String,
+    modelCode: String,
+    brandName: String,
+    launchDate: String
+    person: Person,
+    travels: [Travel],
+    cities: [City],
+    registrations: [VehicleRegistration]
+}
+
+type VehicleRegistration {
+    id: ID,
+    vehicleId: Int,
+    registrationId: Int,
+    name: String,
+    registration: Registration
+}
+
+type Registration {
+    id: ID,
+    from: String,
+    to: String,
+    registrationYear: RegistrationYear
+}
+
+type RegistrationYear {
+    id: ID,
+    year: String
+}
+
+ type Query {
+    vehicles(count: Int):[Vehicle]
+    vehicle(id: ID):Vehicle
+    test(id: ID):Test
+}
+
+type Mutation {
+    createVehicle(type: String!, modelCode: String!, brandName: String, launchDate: String):Vehicle
+}
