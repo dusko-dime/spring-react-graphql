@@ -1,0 +1,18 @@
+type Test {
+    id: ID,
+    year: String
+}
+
+extend type Query {
+    fetchTest(count: Int): Test,
+    getVehiclesFromSecondSchemaFile(count: Int): [Vehicle]
+}
+
+extend type Mutation {
+    createTest(year: String): String
+}
+
+schema {
+    query: Query,
+    mutation: Mutation
+}
